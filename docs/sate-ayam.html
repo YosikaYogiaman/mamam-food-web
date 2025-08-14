@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sate Ayam (Chicken Skewer) — Mamam Food</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="description" content="Sate Ayam (Chicken Skewer) with Mamam’s Sate BBQ Sauce. Mobile‑friendly, compact recipe. Yield 4–5 servings." />
+  <style>
+    /* Compact, mobile-first recipe layout on top of site theme */
+    .recipe-hero{padding:1.25rem 0}
+    .recipe-grid{display:grid;grid-template-columns:1fr;gap:1rem;align-items:center}
+    .recipe-photo{border-radius:16px;overflow:hidden;background:#fff}
+    .yield-pill{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid #eee;border-radius:999px;padding:.35rem .7rem;font-weight:800;color:#3f3b3b}
+
+    .recipe-sections{padding:1.25rem 0 2rem}
+    .recipe-grid-2{display:grid;grid-template-columns:1fr;gap:1rem}
+    .card-plain{background:#fff;border:1px solid rgba(63,59,59,.08);border-radius:16px;padding:1.25rem 1.5rem;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+    .card-plain h2{font-family:'Fredoka',cursive;color:var(--primary);font-size:1.25rem;margin:0 0 .5rem}
+    .subhead-small{color:#6b7280;margin:.25rem 0 .6rem;font-weight:700}
+
+    .ing-group{margin:.5rem 0}
+    .ing-group h3{margin:.4rem 0 .25rem;font-weight:800;color:#3f3b3b}
+    .ing-list{display:grid;grid-template-columns:1fr;gap:.35rem;padding-left:1.1rem}
+    .ing-list li{margin:0}
+    .addons{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.35rem}
+    .chip{border:1px solid #eee;border-radius:999px;padding:.25rem .6rem;background:#fff}
+
+    .steps-list{counter-reset: step; list-style:none; padding-left:0}
+    .steps-list li{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:start;margin:.45rem 0}
+    .steps-list li::before{counter-increment: step; content: counter(step) "."; font-weight:900; color:var(--primary);}
+
+    @media(min-width:900px){
+      .recipe-grid{grid-template-columns:1fr .9fr;gap:1.5rem}
+      .recipe-grid-2{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container nav-content" role="navigation" aria-label="Primary">
+      <a class="logo" href="/" aria-label="Mamam Food home">
+        <img src="../logo.png" onerror="this.src='../Logo.PNG'" alt="Mamam Food logo" />
+      </a>
+      <nav class="primary-nav">
+        <a href="/index.html#why">Why Mamam</a>
+        <a href="/index.html#recipes">Recipes</a>
+        <a href="/index.html#faq">FAQ</a>
+        <button class="nav-cta" data-open="waitlist-modal" aria-haspopup="dialog" aria-controls="waitlist-modal">Join waitlist</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero recipe-hero">
+      <div class="container recipe-grid">
+        <div class="hero-copy">
+          <h1>Sate Ayam 
+          (Chicken Skewer)</h1>
+          <div class="yield-pill" aria-label="Yield">🍢 4–5 servings</div>
+          <div class="hero-ctas" style="margin-top:.6rem">
+            <a class="cta-btn ghost" href="/index.html#recipes">← Back</a>
+            <button class="cta-btn" data-open="waitlist-modal">Get launch perks</button>
+          </div>
+        </div>
+        <figure class="recipe-photo" aria-hidden="true">
+          <img src="../Recipe1.jpg" alt="Sate Ayam skewers with peanut sauce" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- INGREDIENTS + STEPS -->
+    <section class="recipe-sections">
+      <div class="container recipe-grid-2">
+        <section class="card-plain" id="ingredients">
+          <h2>Ingredients</h2>
+          <div class="ing-group">
+            <h3>You’ll need</h3>
+            <ul class="ing-list">
+              <li>600 grams chicken thigh fillet</li>
+              <li>Bamboo skewers (soaked)</li>
+              <li>Mamam's Sate BBQ Sauce</li>
+            </ul>
+          </div>
+
+          <div class="ing-group">
+            <h3>Marinade</h3>
+            <ul class="ing-list">
+              <li>3 clove garlic (optional)</li>
+              <li>5 pc shallot (optional)</li>
+              <li>1 tsp coriander (optional)</li>
+              <li>5 tbsp sweet soy sauce</li>
+              <li>1 pc lime</li>
+              <li>1 tsp salt</li>
+              <li>1 tsp stock powder / MSG</li>
+              <li>¼ tsp pepper</li>
+              <li>300 ml water</li>
+            </ul>
+          </div>
+
+          <div class="ing-group">
+            <h3>Add-ons</h3>
+            <ul class="ing-list">
+              <li>Sliced shallot</li>
+              <li>Boiled red Thai chili</li>
+              <li>Rice</li>
+              <li>Kaffir lime</li>
+              <li>Sweet soy sauce</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card-plain" id="steps">
+          <h2>Steps</h2>
+          <ol class="steps-list">
+            <li>Slice the chicken into long strips. Set aside in a bowl.</li>
+            <li>Blend the shallots, garlic, and coriander with water until smooth. Add into the chicken.</li>
+            <li>Add sweet soy sauce, salt, stock powder, pepper, and lime juice. Stir evenly, then cover with plastic wrap and marinate in the fridge overnight.</li>
+            <li>For the sauce, heat some oil and sauté the red Thai chili, garlic, and shallots. Set aside.</li>
+            <li>Skewer the meat. Heat the pan and add a bit of butter or oil.</li>
+            <li>Add the skewered chicken into the pan. Cook until both sides are browned. Lower the heat, then cover the pan and let it cook.</li>
+            <li>Chicken Sate is ready to serve with Thai chili, kaffir lime, rice or ketupat, and sliced shallots on the side. Add more sweet soy sauce according to taste.</li>
+          </ol>
+        </section>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <div class="cta-content">
+        <h2>Love this recipe? Join our list for launch updates & discounts.</h2>
+        <button type="button" class="cta-btn-dark" data-open="waitlist-modal">Join Waitlist</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Mamam Food. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Waitlist Modal (same as index) -->
+  <div id="waitlist-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-title" hidden>
+    <div class="modal-card">
+      <button class="close" data-close aria-label="Close">×</button>
+      <h3 id="waitlist-title">Get first dibs + launch discount</h3>
+      <p class="modal-sub">Join the Mamam waitlist — exclusive perks at launch.</p>
+
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      <form id="waitlist-form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfjO_PI4Z9yxTVx5plGG4IVrYUAAAMLwyxVF9CmSBVuYnHZ2w/formResponse"
+        method="POST" target="hidden_iframe" novalidate>
+        <label class="sr-only" for="wl-email">Email</label>
+        <input id="wl-email" class="input" type="email" name="entry.1663422065" placeholder="you@gmail.com" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" />
+        <button type="submit" class="nav-cta">Join waitlist</button>
+        <input type="text" name="hp_chek" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true" />
+        <div id="wl-success" class="success">You’re on the list! 🎉</div>
+        <div id="wl-error" class="error">Please enter a valid email.</div>
+      </form>
+      <small class="privacy">We’ll email only about Mamam launches and promos. Unsubscribe anytime.</small>
+    </div>
+  </div>
+
+  <!-- JS (reuse index behavior) -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Modal open/close
+    document.querySelectorAll('[data-open]').forEach(el=>{
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = el.getAttribute('data-open');
+        const modal = document.getElementById(id);
+        if (modal) modal.hidden = false;
+      });
+    });
+    const overlay = document.getElementById('waitlist-modal');
+    function closeModal(){
+      overlay.hidden = true;
+      const form = document.getElementById('waitlist-form');
+      const success = document.getElementById('wl-success');
+      const errorBox = document.getElementById('wl-error');
+      const submitBtn = form?.querySelector('button[type="submit"]');
+      if (success) success.style.display = 'none';
+      if (errorBox) errorBox.style.display = 'none';
+      if (form) form.reset();
+      if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Join waitlist'; }
+    }
+    document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click', closeModal));
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeModal(); });
+    overlay?.addEventListener('click', (e)=>{ if (e.target.classList.contains('modal')) closeModal(); });
+
+    // Waitlist submit → Google Forms via hidden iframe
+    const form = document.getElementById('waitlist-form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const success = document.getElementById('wl-success');
+    const errorBox = document.getElementById('wl-error');
+    const iframe = document.getElementById('hidden_iframe');
+
+    form.addEventListener('submit', (e) => {
+      const hp = form.querySelector('input[name="hp_chek"]');
+      const email = form.querySelector('input[type="email"]');
+      success.style.display = 'none';
+      errorBox.style.display = 'none';
+      if (hp.value) { e.preventDefault(); errorBox.textContent = 'Blocked as spam.'; errorBox.style.display = 'block'; return; }
+      if (!email.value || !email.checkValidity()) { e.preventDefault(); email.focus(); errorBox.textContent = 'Please enter a valid email.'; errorBox.style.display = 'block'; return; }
+      submitBtn.disabled = true; submitBtn.textContent = 'Submitting…';
+      const hiddenSubmit = document.createElement('input');
+      hiddenSubmit.type = 'hidden'; hiddenSubmit.name = 'submit';
+      hiddenSubmit.value = 'Submit';
+      form.appendChild(hiddenSubmit);
+    });
+
+    iframe.addEventListener('load', () => {
+      if (submitBtn.disabled) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join waitlist';
+        success.style.display = 'block';
+        form.reset();
+      }
+    });
+  </script>
+
+  <!-- SEO: updated Recipe structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    "name": "Sate Ayam (Chicken Skewer)",
+    "description": "Compact Jakarta-style chicken satay with Mamam’s Sate BBQ Sauce.",
+    "image": ["https://mamamfood.com/Recipe1.jpg"],
+    "recipeYield": "4-5 servings",
+    "recipeIngredient": [
+      "600 grams chicken thigh fillet",
+      "Bamboo skewers (soaked)",
+      "Mamam's Sate BBQ Sauce",
+      "3 clove garlic (optional)",
+      "5 pc shallot (optional)",
+      "1 tsp coriander (optional)",
+      "5 tbsp sweet soy sauce",
+      "1 pc lime",
+      "1 tsp salt",
+      "1 tsp stock powder / MSG",
+      "1/4 tsp pepper",
+      "300 ml water",
+      "Add-ons: Sliced shallot, Boiled red Thai chili, Rice, Kaffir lime, Sweet soy sauce"
+    ],
+    "recipeInstructions": [
+      {"@type":"HowToStep","text":"Slice the chicken into long strips. Set aside in a bowl."},
+      {"@type":"HowToStep","text":"Blend the shallots, garlic, and coriander with water until smooth. Add into the chicken."},
+      {"@type":"HowToStep","text":"Add sweet soy sauce, salt, stock powder, pepper, and lime juice. Stir evenly, then cover with plastic wrap and marinate in the fridge overnight."},
+      {"@type":"HowToStep","text":"For the sauce, heat some oil and sauté the red Thai chili, garlic, and shallots. Set aside."},
+      {"@type":"HowToStep","text":"Skewer the meat. Heat the pan and add a bit of butter or oil."},
+      {"@type":"HowToStep","text":"Add the skewered chicken into the pan. Cook until both sides are browned. Lower the heat, then cover the pan and let it cook."},
+      {"@type":"HowToStep","text":"Serve with Thai chili, kaffir lime, rice or ketupat, and sliced shallots. Add more sweet soy sauce according to taste."}
+    ]
+  }
+  </script>
+</body>
+</html>
