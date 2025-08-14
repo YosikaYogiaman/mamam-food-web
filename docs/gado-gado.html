@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gado‑Gado Salad — Mamam Food</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="description" content="Gado‑Gado Salad with Mamam’s Sate BBQ Sauce. Mobile‑friendly, compact recipe." />
+  <style>
+    /* Compact, mobile-first recipe layout on top of site theme */
+    .recipe-hero{padding:1.25rem 0}
+    .recipe-grid{display:grid;grid-template-columns:1fr;gap:1rem;align-items:center}
+    .recipe-photo{border-radius:16px;overflow:hidden;background:#fff}
+
+    .recipe-sections{padding:1.25rem 0 2rem}
+    .recipe-grid-2{display:grid;grid-template-columns:1fr;gap:1rem}
+    .card-plain{background:#fff;border:1px solid rgba(63,59,59,.08);border-radius:16px;padding:1.25rem 1.5rem;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+    .card-plain h2{font-family:'Fredoka',cursive;color:var(--primary);font-size:1.25rem;margin:0 0 .5rem}
+
+    .ing-group{margin:.5rem 0}
+    .ing-group h3{margin:.4rem 0 .25rem;font-weight:800;color:#3f3b3b}
+    .ing-list{display:grid;grid-template-columns:1fr;gap:.35rem;padding-left:1.1rem}
+
+    .steps-list{counter-reset: step; list-style:none; padding-left:0}
+    .steps-list li{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:start;margin:.45rem 0}
+    .steps-list li::before{counter-increment: step; content: counter(step) "."; font-weight:900; color:var(--primary);}
+
+    @media(min-width:900px){
+      .recipe-grid{grid-template-columns:1fr .9fr;gap:1.5rem}
+      .recipe-grid-2{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container nav-content" role="navigation" aria-label="Primary">
+      <a class="logo" href="/" aria-label="Mamam Food home">
+        <img src="../logo.png" onerror="this.src='../Logo.PNG'" alt="Mamam Food logo" />
+      </a>
+      <nav class="primary-nav">
+        <a href="/index.html#why">Why Mamam</a>
+        <a href="/index.html#recipes">Recipes</a>
+        <a href="/index.html#faq">FAQ</a>
+        <button class="nav-cta" data-open="waitlist-modal" aria-haspopup="dialog" aria-controls="waitlist-modal">Join waitlist</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero recipe-hero">
+      <div class="container recipe-grid">
+        <div class="hero-copy">
+          <h1>Gado‑Gado Salad</h1>
+          <p class="subhead">Indonesian mixed‑vegetable salad with warm peanut sauce.</p>
+          <div class="hero-ctas" style="margin-top:.6rem">
+            <a class="cta-btn ghost" href="/index.html#recipes">← Back</a>
+            <button class="cta-btn" data-open="waitlist-modal">Get launch perks</button>
+          </div>
+        </div>
+        <figure class="recipe-photo" aria-hidden="true">
+          <img src="../Recipe2.jpg" alt="Gado‑Gado salad with peanut sauce" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- INGREDIENTS + STEPS -->
+    <section class="recipe-sections">
+      <div class="container recipe-grid-2">
+        <section class="card-plain" id="ingredients">
+          <h2>Ingredients</h2>
+          <div class="ing-group">
+            <h3>You’ll need</h3>
+            <ul class="ing-list">
+              <li>Mamam's Sate BBQ Sauce</li>
+              <li>Boiled water spinach (kangkung)</li>
+              <li>Boiled long beans</li>
+              <li>Boiled bean sprouts</li>
+              <li>Boiled cabbage</li>
+              <li>Fried or boiled tofu</li>
+              <li>Fried tempeh</li>
+              <li>Hard‑boiled eggs</li>
+              <li>Boiled potatoes</li>
+              <li>Fresh cucumber</li>
+              <li>Rice cake (lontong) or plain white rice</li>
+            </ul>
+          </div>
+
+          <div class="ing-group">
+            <h3>Add‑ons</h3>
+            <ul class="ing-list">
+              <li>Fried shallots</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card-plain" id="steps">
+          <h2>Steps</h2>
+          <ol class="steps-list">
+            <li>Wash and cut the vegetables: water spinach, long beans, cabbage, bean sprouts, and cucumber.</li>
+            <li>Blanch the water spinach, long beans, cabbage, and bean sprouts in boiling water for 1–2 minutes each. Drain well so they stay bright and slightly crunchy.</li>
+            <li>Boil the potatoes and eggs until cooked. Peel and slice.</li>
+            <li>Fry the tempeh until golden brown; set aside.</li>
+            <li>Prepare the tofu — deep‑fry, pan‑fry, or leave plain (fried is more common).</li>
+            <li>If using lontong (rice cake) or ketupat, cut into bite‑sized cubes. If using white rice, keep it warm.</li>
+            <li>Assemble: on a large plate, arrange a portion of each boiled vegetable, cucumber slices, potato, tempeh, tofu, and egg. Add rice cake/ketupat or a scoop of white rice on the side.</li>
+            <li>Warm Mamam's Sate BBQ Sauce gently in a small pan (add a splash of water if needed). Pour generously over the salad.</li>
+            <li>Sprinkle with fried shallots and serve immediately.</li>
+          </ol>
+        </section>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <div class="cta-content">
+        <h2>Love this recipe? Join our list for launch updates & discounts.</h2>
+        <button type="button" class="cta-btn-dark" data-open="waitlist-modal">Join Waitlist</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Mamam Food. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Waitlist Modal (same as index) -->
+  <div id="waitlist-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-title" hidden>
+    <div class="modal-card">
+      <button class="close" data-close aria-label="Close">×</button>
+      <h3 id="waitlist-title">Get first dibs + launch discount</h3>
+      <p class="modal-sub">Join the Mamam waitlist — exclusive perks at launch.</p>
+
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      <form id="waitlist-form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfjO_PI4Z9yxTVx5plGG4IVrYUAAAMLwyxVF9CmSBVuYnHZ2w/formResponse"
+        method="POST" target="hidden_iframe" novalidate>
+        <label class="sr-only" for="wl-email">Email</label>
+        <input id="wl-email" class="input" type="email" name="entry.1663422065" placeholder="you@gmail.com" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" />
+        <button type="submit" class="nav-cta">Join waitlist</button>
+        <input type="text" name="hp_chek" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true" />
+        <div id="wl-success" class="success">You’re on the list! 🎉</div>
+        <div id="wl-error" class="error">Please enter a valid email.</div>
+      </form>
+      <small class="privacy">We’ll email only about Mamam launches and promos. Unsubscribe anytime.</small>
+    </div>
+  </div>
+
+  <!-- JS (reuse index behavior) -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Modal open/close
+    document.querySelectorAll('[data-open]').forEach(el=>{
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = el.getAttribute('data-open');
+        const modal = document.getElementById(id);
+        if (modal) modal.hidden = false;
+      });
+    });
+    const overlay = document.getElementById('waitlist-modal');
+    function closeModal(){
+      overlay.hidden = true;
+      const form = document.getElementById('waitlist-form');
+      const success = document.getElementById('wl-success');
+      const errorBox = document.getElementById('wl-error');
+      const submitBtn = form?.querySelector('button[type="submit"]');
+      if (success) success.style.display = 'none';
+      if (errorBox) errorBox.style.display = 'none';
+      if (form) form.reset();
+      if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Join waitlist'; }
+    }
+    document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click', closeModal));
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeModal(); });
+    overlay?.addEventListener('click', (e)=>{ if (e.target.classList.contains('modal')) closeModal(); });
+
+    // Waitlist submit → Google Forms via hidden iframe
+    const form = document.getElementById('waitlist-form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const success = document.getElementById('wl-success');
+    const errorBox = document.getElementById('wl-error');
+    const iframe = document.getElementById('hidden_iframe');
+
+    form.addEventListener('submit', (e) => {
+      const hp = form.querySelector('input[name="hp_chek"]');
+      const email = form.querySelector('input[type="email"]');
+      success.style.display = 'none';
+      errorBox.style.display = 'none';
+      if (hp.value) { e.preventDefault(); errorBox.textContent = 'Blocked as spam.'; errorBox.style.display = 'block'; return; }
+      if (!email.value || !email.checkValidity()) { e.preventDefault(); email.focus(); errorBox.textContent = 'Please enter a valid email.'; errorBox.style.display = 'block'; return; }
+      submitBtn.disabled = true; submitBtn.textContent = 'Submitting…';
+      const hiddenSubmit = document.createElement('input');
+      hiddenSubmit.type = 'hidden'; hiddenSubmit.name = 'submit'; hiddenSubmit.value = 'Submit';
+      form.appendChild(hiddenSubmit);
+    });
+
+    iframe.addEventListener('load', () => {
+      if (submitBtn.disabled) { submitBtn.disabled = false; submitBtn.textContent = 'Join waitlist'; success.style.display = 'block'; form.reset(); }
+    });
+  </script>
+
+  <!-- SEO: Recipe structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    "name": "Gado‑Gado Salad",
+    "description": "Indonesian mixed‑vegetable salad with warm peanut sauce made easy with Mamam’s Sate BBQ Sauce.",
+    "image": ["https://mamamfood.com/Recipe2.jpg"],
+    "recipeIngredient": [
+      "Mamam's Sate BBQ Sauce",
+      "Boiled water spinach (kangkung)",
+      "Boiled long beans",
+      "Boiled bean sprouts",
+      "Boiled cabbage",
+      "Fried or boiled tofu",
+      "Fried tempeh",
+      "Hard-boiled eggs",
+      "Boiled potatoes",
+      "Fresh cucumber",
+      "Rice cake (lontong) or plain white rice",
+      "Add-ons: Fried shallots"
+    ],
+    "recipeInstructions": [
+      {"@type":"HowToStep","text":"Wash and cut the vegetables: water spinach, long beans, cabbage, bean sprouts, and cucumber."},
+      {"@type":"HowToStep","text":"Blanch the water spinach, long beans, cabbage, and bean sprouts for 1–2 minutes each. Drain well."},
+      {"@type":"HowToStep","text":"Boil the potatoes and eggs until cooked, then peel and slice."},
+      {"@type":"HowToStep","text":"Fry the tempeh until golden brown; set aside."},
+      {"@type":"HowToStep","text":"Prepare the tofu — deep-fry, pan-fry, or leave plain (fried is more common)."},
+      {"@type":"HowToStep","text":"If using lontong (rice cake) or ketupat, cut into bite-sized cubes. If using white rice, keep it warm."},
+      {"@type":"HowToStep","text":"Assemble on a large plate: boiled vegetables, cucumber slices, potato, tempeh, tofu, and egg. Add rice cake/ketupat or a scoop of white rice on the side."},
+      {"@type":"HowToStep","text":"Warm Mamam's Sate BBQ Sauce (loosen with a splash of water if desired) and pour generously over the salad."},
+      {"@type":"HowToStep","text":"Sprinkle with fried shallots and serve immediately."}
+    ]
+  }
+  </script>
+</body>
+</html>
