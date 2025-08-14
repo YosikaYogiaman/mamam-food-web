@@ -360,5 +360,20 @@ img{max-width:100%;height:auto;display:block}
 .privacy{display:block;margin-top:18px;color:#6b7280;font-size:.95rem}
 .form-note{grid-column:1 / -1;color:#475569;font-size:.95rem;min-height:1.2em}
 
+/* Waitlist: match waitlist.html behavior */
+#waitlist-form{ grid-template-columns: 1fr auto; }
+#waitlist-form input[type="email"]:focus{
+  outline:none; border-color: var(--primary);
+  box-shadow: 0 0 0 6px rgba(245,98,98,.25);
+}
+/* screen-reader utility (used below) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+/* success/error banners */
+.success,.error{
+  display:none;margin-top:14px;padding:12px 14px;border-radius:12px;font-weight:700;
+}
+.success{background:#ecfdf5;color:#065f46}
+.error{background:#fef2f2;color:#991b1b}
+
 /* Mobile: stack field and button */
 @media (max-width:560px){ #waitlist-form{grid-template-columns:1fr} }

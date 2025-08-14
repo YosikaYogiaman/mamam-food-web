@@ -232,37 +232,125 @@
     </div>
   </footer>
 
-<!-- Waitlist Modal -->
 <div id="waitlist-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-title" hidden>
   <div class="modal-card">
     <button class="close" data-close aria-label="Close">×</button>
 
     <h3 id="waitlist-title">Get first dibs + launch discount</h3>
     <p class="modal-sub">Join the Mamam waitlist — exclusive perks at launch.</p>
+    <h4 id="waitlist-form-title">Email</h4>
 
-<form
-  action="https://script.google.com/macros/s/AKfycbz1TKoQnIydinA9p3Nw9M6VlocqZHX7eOtGTT0s_bcTa4mNlEWRhwzLLpzZfqGYecNUDg/exec"
-  method="POST"
-  target="hidden_iframe"
-  onsubmit="this.querySelector('button[type=submit]').disabled=true">
+    <!-- Hidden iFrame to catch Google Forms redirect (prevents navigation) -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-  <label class="sr-only" for="wl-email">Email</label>
-  <input id="wl-email" name="email" type="email" placeholder="you@gmail.com" required />
+    <form id="waitlist-form"
+      action="https://docs.google.com/forms/d/e/1FAIpQLSfjO_PI4Z9yxTVx5plGG4IVrYUAAAMLwyxVF9CmSBVuYnHZ2w/formResponse"
+      method="POST" target="hidden_iframe" novalidate>
+      <label class="sr-only" for="wl-email">Email</label>
+      <!-- IMPORTANT: map to your Google Forms entry field -->
+      <input id="wl-email" class="input" type="email" name="entry.1663422065" placeholder="you@gmail.com" required />
+      <button type="submit" class="nav-cta">Join waitlist</button>
 
-  <button type="submit" class="nav-cta">Join waitlist</button>
-</form>
+      <!-- Honeypot (blocks simple bots) -->
+      <input type="text" name="hp_chek" tabindex="-1" autocomplete="off"
+             style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true" />
 
-<iframe name="hidden_iframe" style="display:none"></iframe>
+      <!-- Feedback banners -->
+      <div id="wl-success" class="success">You’re on the list! 🎉</div>
+      <div id="wl-error" class="error">Please enter a valid email.</div>
+    </form>
 
     <small class="privacy">We’ll email only about Mamam launches and promos. Unsubscribe anytime.</small>
   </div>
 </div>
 
 <script>
- // Replace with your deployed Apps Script Web App URL
-  const WL_ENDPOINT = "https://script.google.com/macros/s/AKfycbz1TKoQnIydinA9p3Nw9M6VlocqZHX7eOtGTT0s_bcTa4mNlEWRhwzLLpzZfqGYecNUDg/exec";
+  // Footer year (unchanged)
+  document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Open modal on any element with data-open="waitlist-modal"
+  document.querySelectorAll('[data-open]').forEach(el=>{
+    el.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const id = el.getAttribute('data-open');
+      const modal = document.getElementById(id);
+      if (modal) modal.hidden = false;
+    });
+  });
+
+  // Close helpers (buttons, ESC, backdrop)
+  const overlay = document.getElementById('waitlist-modal');
+  function closeModal(){
+    overlay.hidden = true;
+    // reset form banners/state
+    const form = document.getElementById('waitlist-form');
+    const success = document.getElementById('wl-success');
+    const errorBox = document.getElementById('wl-error');
+    const submitBtn = form?.querySelector('button[type="submit"]');
+    if (success) success.style.display = 'none';
+    if (errorBox) errorBox.style.display = 'none';
+    if (form) form.reset();
+    if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Join waitlist'; }
+  }
+  document.querySelectorAll('[data-close]').forEach(btn=>{
+    btn.addEventListener('click', closeModal);
+  });
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape') closeModal();
+  });
+  overlay?.addEventListener('click', (e)=>{
+    if (e.target.classList.contains('modal')) closeModal();
+  });
+
+  // Waitlist behavior (no CORS – posts directly to Google Forms)
+  const form = document.getElementById('waitlist-form');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const success = document.getElementById('wl-success');
+  const errorBox = document.getElementById('wl-error');
+  const iframe = document.getElementById('hidden_iframe');
+
+  form.addEventListener('submit', (e) => {
+    const hp = form.querySelector('input[name="hp_chek"]');
+    const email = form.querySelector('input[type="email"]');
+    success.style.display = 'none';
+    errorBox.style.display = 'none';
+
+    if (hp.value) { // bot
+      e.preventDefault();
+      errorBox.textContent = 'Blocked as spam.';
+      errorBox.style.display = 'block';
+      return;
+    }
+    if (!email.value || !email.checkValidity()) {
+      e.preventDefault();
+      email.focus();
+      errorBox.textContent = 'Please enter a valid email.';
+      errorBox.style.display = 'block';
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    // Mimic Google button value
+    const hiddenSubmit = document.createElement('input');
+    hiddenSubmit.type = 'hidden';
+    hiddenSubmit.name = 'submit';
+    hiddenSubmit.value = 'Submit';
+    form.appendChild(hiddenSubmit);
+    // Let the browser POST to Google Forms (no fetch => no CORS).
+  });
+
+  // When Google finishes (inside hidden iframe), show success
+  iframe.addEventListener('load', () => {
+    if (submitBtn.disabled) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Join waitlist';
+      success.style.display = 'block';
+      form.reset();
+    }
+  });
 </script>
+
 
   <!-- Minimal JS -->
 <script>
