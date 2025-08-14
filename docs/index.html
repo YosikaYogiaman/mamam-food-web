@@ -240,12 +240,19 @@
     <h3 id="waitlist-title">Get first dibs + launch discount</h3>
     <p class="modal-sub">Join the Mamam waitlist — exclusive perks at launch.</p>
 
-    <form id="waitlist-form">
-      <label class="sr-only" for="wl-email">Email</label>
-      <input id="wl-email" type="email" name="email" placeholder="you@gmail.com" required />
-      <button type="submit" class="nav-cta">Join waitlist</button>
-      <p class="form-note" aria-live="polite"></p>
-    </form>
+<form
+  action="https://script.google.com/macros/s/AKfycbz1TKoQnIydinA9p3Nw9M6VlocqZHX7eOtGTT0s_bcTa4mNlEWRhwzLLpzZfqGYecNUDg/exec"
+  method="POST"
+  target="hidden_iframe"
+  onsubmit="this.querySelector('button[type=submit]').disabled=true">
+
+  <label class="sr-only" for="wl-email">Email</label>
+  <input id="wl-email" name="email" type="email" placeholder="you@gmail.com" required />
+
+  <button type="submit" class="nav-cta">Join waitlist</button>
+</form>
+
+<iframe name="hidden_iframe" style="display:none"></iframe>
 
     <small class="privacy">We’ll email only about Mamam launches and promos. Unsubscribe anytime.</small>
   </div>
@@ -253,26 +260,8 @@
 
 <script>
  // Replace with your deployed Apps Script Web App URL
-  const WL_ENDPOINT = "https://script.google.com/macros/s/AKfycbwAiBd4l3yVcBdO0TDjPoomvotzePUPQCDnBxWPS5bR4Fzlcn5M_g3Iq7641bgcFTCvmQ/exec";
+  const WL_ENDPOINT = "https://script.google.com/macros/s/AKfycbz1TKoQnIydinA9p3Nw9M6VlocqZHX7eOtGTT0s_bcTa4mNlEWRhwzLLpzZfqGYecNUDg/exec";
 
-  document.getElementById('waitlist-form').addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    const note = e.target.querySelector('.form-note');
-    note.textContent = "Submitting…";
-
-    try{
-      const res = await fetch(WL_ENDPOINT, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ email: e.target.email.value })
-      });
-      if(!res.ok) throw new Error('Network');
-      note.textContent = "Thanks! You’re on the list 🎉";
-      e.target.reset();
-    }catch(err){
-      note.textContent = "Oops—please try again in a moment.";
-    }
-  });
 </script>
 
   <!-- Minimal JS -->
