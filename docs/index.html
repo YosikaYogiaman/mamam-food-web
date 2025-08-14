@@ -209,7 +209,9 @@
 <section class="cta-block">
   <div class="cta-content">
     <h2>Be first in line for launch + early discounts</h2>
-    <a href="#waitlist" class="cta-btn-dark">Join Waitlist</a>
+    <button type="button" class="cta-btn-dark" data-open="waitlist-modal">
+  Join Waitlist
+</button>
   </div>
 </section>
 
@@ -230,26 +232,82 @@
     </div>
   </footer>
 
-  <!-- Waitlist Modal -->
-  <div id="waitlist-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-title" hidden>
-    <div class="modal-card">
-      <button class="close" data-close aria-label="Close">×</button>
-      <h3 id="waitlist-title">Get first dibs + launch discount</h3>
-      <form action="https://formspree.io/f/your-id" method="POST">
-        <label class="visually-hidden" for="email">Email</label>
-        <input id="email" type="email" name="email" placeholder="you@gmail.com" required />
-        <button type="submit" class="cta-btn-dark">Join waitlist</button>
-      </form>
-      <small class="privacy">We’ll email only about Mamam launches and promos. Unsubscribe anytime.</small>
-    </div>
+<!-- Waitlist Modal -->
+<div id="waitlist-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-title" hidden>
+  <div class="modal-card">
+    <button class="close" data-close aria-label="Close">×</button>
+
+    <h3 id="waitlist-title">Get first dibs + launch discount</h3>
+    <p class="modal-sub">Join the Mamam waitlist — exclusive perks at launch.</p>
+
+    <form id="waitlist-form">
+      <label class="sr-only" for="wl-email">Email</label>
+      <input id="wl-email" type="email" name="email" placeholder="you@gmail.com" required />
+      <button type="submit" class="nav-cta">Join waitlist</button>
+      <p class="form-note" aria-live="polite"></p>
+    </form>
+
+    <small class="privacy">We’ll email only about Mamam launches and promos. Unsubscribe anytime.</small>
   </div>
+</div>
+
+<script>
+ // Replace with your deployed Apps Script Web App URL
+  const WL_ENDPOINT = "https://script.google.com/macros/s/AKfycbwAiBd4l3yVcBdO0TDjPoomvotzePUPQCDnBxWPS5bR4Fzlcn5M_g3Iq7641bgcFTCvmQ/exec";
+
+  document.getElementById('waitlist-form').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const note = e.target.querySelector('.form-note');
+    note.textContent = "Submitting…";
+
+    try{
+      const res = await fetch(WL_ENDPOINT, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ email: e.target.email.value })
+      });
+      if(!res.ok) throw new Error('Network');
+      note.textContent = "Thanks! You’re on the list 🎉";
+      e.target.reset();
+    }catch(err){
+      note.textContent = "Oops—please try again in a moment.";
+    }
+  });
+</script>
 
   <!-- Minimal JS -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.open).hidden=false);
-    document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>b.closest('.modal').hidden=true);
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('waitlist-modal').hidden=true}});
-  </script>
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Open modal on any element with data-open="waitlist-modal"
+  document.querySelectorAll('[data-open]').forEach(el=>{
+    el.addEventListener('click', (e)=>{
+      e.preventDefault();                              // stop <a> jumps if any
+      const id = el.getAttribute('data-open');
+      const modal = document.getElementById(id);
+      if (modal) modal.hidden = false;
+    });
+  });
+
+  // Close on any [data-close] button
+  document.querySelectorAll('[data-close]').forEach(btn=>{
+    btn.addEventListener('click', ()=> btn.closest('.modal').hidden = true);
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape') {
+      const m = document.getElementById('waitlist-modal');
+      if (m) m.hidden = true;
+    }
+  });
+
+  // Optional: close when clicking the backdrop (outside the card)
+  document.getElementById('waitlist-modal')?.addEventListener('click', (e)=>{
+    if (e.target.classList.contains('modal')) e.currentTarget.hidden = true;
+  });
+</script>
+
 </body>
 </html>
