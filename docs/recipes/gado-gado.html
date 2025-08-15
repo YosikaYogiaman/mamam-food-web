@@ -58,7 +58,7 @@
           <h1>Gado‑Gado Salad</h1>
           <p class="subhead">Indonesian mixed‑vegetable salad with warm peanut sauce.</p>
           <div class="hero-ctas" style="margin-top:.6rem">
-            <a class="cta-btn ghost" href="/index.html#recipes">← Back</a>
+            <a id="back-link" class="cta-btn ghost" href="../index.html#recipes" data-fallback="../index.html#recipes">← Back</a>
             <button class="cta-btn" data-open="waitlist-modal">Get launch perks</button>
           </div>
         </div>
@@ -202,6 +202,23 @@
 
     iframe.addEventListener('load', () => {
       if (submitBtn.disabled) { submitBtn.disabled = false; submitBtn.textContent = 'Join waitlist'; success.style.display = 'block'; form.reset(); }
+    });
+
+    // Robust Back button: go back if there is a same-origin referrer; otherwise fall back to Recipes section
+    const backLink = document.getElementById('back-link');
+    backLink?.addEventListener('click', (e) => {
+      e.preventDefault();
+      try {
+        if (document.referrer) {
+          const ref = new URL(document.referrer);
+          if (ref.origin === location.origin) {
+            history.back();
+            return;
+          }
+        }
+      } catch (_) { /* ignore malformed referrers */ }
+      const fallback = backLink.getAttribute('data-fallback') || '../index.html#recipes';
+      location.href = fallback;
     });
   </script>
 
